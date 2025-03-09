@@ -1,16 +1,15 @@
 ```mermaid
-sequenceDiagram Auth
+sequenceDiagram
     Alice->>+Auth: Signup
     Auth->>Auth: Verify duplicate account
     Auth-->>-Alice: Account created
     Alice->>+Auth: Login
     Auth->>Auth: Verify credentials
     Auth-->>-Alice: Login successful<br>Return JWT
-
 ```
 
 ```mermaid
-flowchart Signup
+flowchart
     Start --> Validate([Validate email and password inputs])
     Validate --> |Valid| CheckDuplicate([Check if email is already registered])
     CheckDuplicate --> |Not Exists| Persist([Salt password and persist user data])
@@ -20,7 +19,7 @@ flowchart Signup
 ```
 
 ```mermaid
-flowchart Login
+flowchart
     Start --> Validate([Validate email and password inputs])
     Validate --> |Valid| CheckCredentials[Salt password and check in persistence]
     Validate --> |Invalid| EndError[400 Show error message]
@@ -30,7 +29,7 @@ flowchart Login
 ```
 
 ```mermaid
-erDiagram UserData
+erDiagram
     User {
         string name
         string email
